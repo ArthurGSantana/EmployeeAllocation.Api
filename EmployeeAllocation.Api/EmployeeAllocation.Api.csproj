@@ -15,4 +15,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeAllocation.IoC\EmployeeAllocation.IoC.csproj" />
+  </ItemGroup>
+
 </Project>
