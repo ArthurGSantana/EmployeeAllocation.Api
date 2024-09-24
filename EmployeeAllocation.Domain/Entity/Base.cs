@@ -1,6 +1,6 @@
 namespace EmployeeAllocation.Domain.Entity;
 
-public class Base
+public abstract class Base
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
