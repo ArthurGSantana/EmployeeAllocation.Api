@@ -1,4 +1,5 @@
 using System.Reflection;
+using EmployeeAllocation.Domain.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeAllocation.Data.Context;
@@ -16,15 +17,15 @@ public class PostgresDbContext(DbContextOptions<PostgresDbContext> options) : Db
         }
 
         // Reflection para chamar os métodos Seed das classes que implementam ISeed
-        // var seeders = Assembly.GetExecutingAssembly().GetTypes()
-        //                     .Where(t => typeof(ISeed).IsAssignableFrom(t) && !t.IsInterface)
-        //                     .Select(Activator.CreateInstance)
-        //                     .Cast<ISeed>();
+        var seeders = Assembly.GetExecutingAssembly().GetTypes()
+            .Where(t => typeof(ISeed).IsAssignableFrom(t) && !t.IsInterface)
+            .Select(Activator.CreateInstance)
+            .Cast<ISeed>();
 
-        // foreach (var seeder in seeders)
-        // {
-        //     seeder.Seed(modelBuilder);
-        // }
+        foreach (var seeder in seeders)
+        {
+            seeder.Seed(modelBuilder);
+        }
 
         base.OnModelCreating(modelBuilder);
     }
