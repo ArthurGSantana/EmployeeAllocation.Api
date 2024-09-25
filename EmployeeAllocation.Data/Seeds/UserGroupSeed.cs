@@ -1,4 +1,5 @@
 using EmployeeAllocation.Domain.Entity;
+using EmployeeAllocation.Domain.Enums;
 using EmployeeAllocation.Domain.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,12 +13,14 @@ public class UserGroupSeed : ISeed
             new UserGroup
             {
                 Id = new Guid("00000000-0000-0000-0000-000000000001"),
-                Name = "Admin"
+                Name = "Admin",
+                Code = UserGroupEnum.Admin
             },
             new UserGroup
             {
                 Id = new Guid("00000000-0000-0000-0000-000000000002"),
-                Name = "Manager"
+                Name = "Manager",
+                Code = UserGroupEnum.Manager
             }
         );
     }
